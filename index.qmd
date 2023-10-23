@@ -1,5 +1,11 @@
 ---
 title: "Welcome!"
+about: 
+  image: UCTLogoCircular.jpg
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/sihlenjn 
 ---
 
 This is a website for Assignment of DS4I.

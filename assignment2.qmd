@@ -1,0 +1,31 @@
+---
+title: "Data Science for Industry Assignment 2"
+author: "Sihle Njonga"
+institute: "University of Cape Town"
+toc: true
+number-sections: false
+format:
+  html: 
+    code-fold: false
+    html-math-method: katex
+fig-width: 8
+fig-height: 6
+fig-align: "center"
+fig-asp: 0.7
+fig-dpi: 300
+bibliography: ref.bib
+---
+
+```{r setup,include = FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE)
+```
+
+# QUESTION 1
+
+```{r code1}
+#| label: fig-top10eachPres
+#| fig-cap: "Random values from a Normal distribution."
+
+xx = rnorm(1000)
+hist(xx,col="red",main="",xlab = expression(x))
+```
