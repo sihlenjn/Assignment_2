@@ -1,0 +1,14 @@
+---
+title: "Report on use of Large Language Models (LLM)"
+number-sections: false
+format:
+  html: 
+    code-fold: false
+    html-math-method: katex
+---
+
+In the part of the paper, we provide a description of what Large Language Models (LLM) were used for and provide a critical reflection on the performance of the LLM for assisting with data science related work such as this project.
+
+# QuillBolt AI
+
+# ChatGPT

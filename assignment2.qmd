@@ -8,7 +8,7 @@ format:
   html: 
     code-fold: false
     html-math-method: katex
-fig-width: 8
+fig-width: 7
 fig-height: 6
 fig-align: "center"
 fig-asp: 0.4
@@ -20,7 +20,25 @@ bibliography: ref.bib
 knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE)
 ```
 
-# QUESTION 1
+# Abstract
+
+# Introduction
+
+Understanding the content and emotions hidden in volumes of text data is a great tool to get insights on the emotions of the Author of the text. In this paper, we look at the State of the Nation Address of the President of South Africa (SONA) speeches where the president of South Africa reports on the status of the nation. These speeches are provided as full text sources from <https://www.gov.za/state-nation-address>. We look to conduct a descriptive analysis of the content of the speeches using sentiment analysis and topic modelling. This will look at the tone of the expressed in the speeches by the president on the speeches through sentiment analysis. We also explore the underlying themes and patterns embedded in these speeches, this will be done via topic modelling. In both cases, we will look at identifying trends over time in the speeches.
+
+The structure of the paper is divided into the following sections:
+
+-   *Data pre-processing*: This is explains how the data was cleaned and transformed to a compatible form such as we can conduct our analysis.
+
+-   *Methodology*: We touch on the theory of latent Dirichlet allocation (LDA) which is used for topic modelling and the steps taken to conduct sentiment analysis.
+
+-   *Results and discussion* : This compromises of plots, tables and discussion on the results obtained. We also include future recommendations on parts that be improved and also some shortcomings can must be considered for somewhere reading this paper.
+
+# Sentiment Analysis
+
+# Topic modelling
+
+# Conclusion
 
 In @fig-NormalDistribution , 1000 random variables are generated from a standard normal distribution $\bar{x}= 0$ and $\sigma^2=1$
 

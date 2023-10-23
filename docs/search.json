@@ -4,7 +4,7 @@
     "href": "assignment2.html",
     "title": "Data Science for Industry Assignment 2",
     "section": "",
-    "text": "QUESTION 1\nIn Figure 1 , 1000 random variables are generated from a standard normal distribution \\bar{x}= 0 and \\sigma^2=1\n\n\n\n\n\nFigure 1: Random values from a Normal distribution.\n\n\n\n\nR Core Team (2023) is used in this project.\n\n\n\n\n\nReferences\n\nR Core Team. 2023. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/."
+    "text": "Abstract\n\n\nIntroduction\nUnderstanding the content and emotions hidden in volumes of text data is a great tool to get insights on the emotions of the Author of the text. In this paper, we look at the State of the Nation Address of the President of South Africa (SONA) speeches where the president of South Africa reports on the status of the nation. These speeches are provided as full text sources from https://www.gov.za/state-nation-address. We look to conduct a descriptive analysis of the content of the speeches using sentiment analysis and topic modelling. This will look at the tone of the expressed in the speeches by the president on the speeches through sentiment analysis. We also explore the underlying themes and patterns embedded in these speeches, this will be done via topic modelling. In both cases, we will look at identifying trends over time in the speeches.\nThe structure of the paper is divided into the following sections:\n\nData pre-processing: This is explains how the data was cleaned and transformed to a compatible form such as we can conduct our analysis.\nMethodology: We touch on the theory of latent Dirichlet allocation (LDA) which is used for topic modelling and the steps taken to conduct sentiment analysis.\nResults and discussion : This compromises of plots, tables and discussion on the results obtained. We also include future recommendations on parts that be improved and also some shortcomings can must be considered for somewhere reading this paper.\n\n\n\nSentiment Analysis\n\n\nTopic modelling\n\n\nConclusion\nIn Figure 1 , 1000 random variables are generated from a standard normal distribution \\bar{x}= 0 and \\sigma^2=1\n\n\n\n\n\nFigure 1: Random values from a Normal distribution.\n\n\n\n\nR Core Team (2023) is used in this project.\n\n\n\n\n\nReferences\n\nR Core Team. 2023. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/."
   },
   {
     "objectID": "index.html",
@@ -12,5 +12,12 @@
     "title": "Welcome!",
     "section": "",
     "text": "This is a website for Assignment of DS4I. The following files can be found under each tab."
+  },
+  {
+    "objectID": "LLM.html",
+    "href": "LLM.html",
+    "title": "Report on use of Large Language Models (LLM)",
+    "section": "",
+    "text": "In the part of the paper, we provide a description of what Large Language Models (LLM) were used for and provide a critical reflection on the performance of the LLM for assisting with data science related work such as this project.\n\nQuillBolt AI\n\n\nChatGPT"
   }
 ]

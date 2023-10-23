@@ -10,6 +10,8 @@ website:
         text: Home
       - href: assignment2.qmd
         text: Main assignment
+      - href: LLM.qmd
+        text: Large Language Models
       - href: ref.bib
         text: References
 echo: false
