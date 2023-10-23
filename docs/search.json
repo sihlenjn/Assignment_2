@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome!",
+    "section": "",
+    "text": "This is a website for Assignment of DS4I. The following files can be found under each tab."
+  },
+  {
+    "objectID": "multiplication.html",
+    "href": "multiplication.html",
+    "title": "Multiplying numbers in R",
+    "section": "",
+    "text": "To multiply numbers in R use *. These should be change immediately\n\n2 * 3\n\n[1] 6"
+  }
+]
