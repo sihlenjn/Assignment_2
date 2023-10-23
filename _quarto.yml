@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "A paper on sentiment analysis and topic modelling applied to the SONA speeches"
+  title: "Paper on sentiment analysis and topic modelling"
   navbar:
     right:
       - href: index.qmd
@@ -12,6 +12,8 @@ website:
         text: Main assignment
       - href: ref.bib
         text: references
+      - href: https://github.com/sihlenjn 
+        text: Github
 echo: false
 format:
   html:
