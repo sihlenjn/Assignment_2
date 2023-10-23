@@ -79,6 +79,22 @@ div.csl-indent {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -165,7 +181,7 @@ div.csl-indent {
 
 <section id="question-1" class="level1">
 <h1>QUESTION 1</h1>
-<p>In <a href="#fig-NormalDistribution">Figure&nbsp;1</a> , 1000 random variables are generated from a standard normal distribution mean 0 and variance 1.</p>
+<p>In <a href="#fig-NormalDistribution">Figure&nbsp;1</a> , 1000 random variables are generated from a standard normal distribution <span class="math inline">\bar{x}= 0</span> and <span class="math inline">\sigma^2=1</span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-NormalDistribution" class="quarto-figure quarto-figure-center anchored">
