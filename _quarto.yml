@@ -11,9 +11,7 @@ website:
       - href: assignment2.qmd
         text: Main assignment
       - href: ref.bib
-        text: references
-      - href: https://github.com/sihlenjn 
-        text: Github
+        text: References
 echo: false
 format:
   html:

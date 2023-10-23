@@ -32,4 +32,4 @@ xx = rnorm(1000)
 hist(xx,col="red",main="",xlab = expression(x))
 ```
 
-@f
+@R is used in this project.

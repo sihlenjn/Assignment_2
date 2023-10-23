@@ -5,5 +5,12 @@
     "title": "Welcome!",
     "section": "",
     "text": "This is a website for Assignment of DS4I. The following files can be found under each tab."
+  },
+  {
+    "objectID": "assignment2.html",
+    "href": "assignment2.html",
+    "title": "Data Science for Industry Assignment 2",
+    "section": "",
+    "text": "QUESTION 1\nIn Figure 1 , 1000 random variables are generated from a standard normal distribution mean 0 and variance 1.\n\n\n\n\n\nFigure 1: Random values from a Normal distribution.\n\n\n\n\nR Core Team (2023) is used in this project.\n\n\n\n\n\nReferences\n\nR Core Team. 2023. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/."
   }
 ]
