@@ -3,15 +3,19 @@ project:
   output-dir: docs
 
 website:
-  title: "A Quarto Website"
+  title: "A paper on sentiment analysis and topic modelling applied to the SONA speeches"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
-      - multiplication.qmd
-
+      - href: assignment2.qmd
+        text: Main assignment
+      - href: ref.bib
+        text: references
+echo: false
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+    
