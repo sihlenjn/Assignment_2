@@ -2,5 +2,4 @@
 title: "Welcome!"
 ---
 
-This is a website for Assignment of DS4I.
-The following files can be found under each tab.
+This is a website for Assignment of DS4I Assignment 1.

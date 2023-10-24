@@ -110,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quillbolt-ai" id="toc-quillbolt-ai" class="nav-link active" data-scroll-target="#quillbolt-ai">QuillBolt AI</a></li>
+  <li><a href="#quillbot--a-paraphraser-tool" id="toc-quillbot--a-paraphraser-tool" class="nav-link active" data-scroll-target="#quillbot--a-paraphraser-tool">Quillbot- a paraphraser tool</a></li>
   <li><a href="#chatgpt" id="toc-chatgpt" class="nav-link" data-scroll-target="#chatgpt">ChatGPT</a></li>
   </ul>
 </nav>
@@ -135,12 +135,20 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>In the part of the paper, we provide a description of what Large Language Models (LLM) were used for and provide a critical reflection on the performance of the LLM for assisting with data science related work such as this project.</p>
-<section id="quillbolt-ai" class="level1">
-<h1>QuillBolt AI</h1>
+<p>In this part of the paper, we provide a description of what Large Language Models (LLM) were used for and provide a critical reflection on the performance of the LLM for assisting with data science related work such as this project. The two LLM used in this paper are quillbot and ChatGPT each being completely different purposes.</p>
+<section id="quillbot--a-paraphraser-tool" class="level1">
+<h1>Quillbot- a paraphraser tool</h1>
+<p>Quillbot is a paraphraser AI tool used to paraphrase a sentence or paragraph and make it formula. All the writing parts of this assignment, this AI tool was used to help with grammar. I type the sentence of my own then copy the sentence to this AI tool. In most cases, if not all , it always just replaces some words with synonyms. The sentence at times loses it meaning so I make sure that meaning is still what I wanted say. This tool doesn’t do well with statistical terms especially if I wanted to rewrite interpretations to a mode. The output it generate at times does not make any sense.</p>
+<p>Given that I was using the free version of this tool, it’s difficult to provide a complete assessment of its performance. The benefits of using this tool, is that it helps those people who struggle with writing and maybe English is not their home language But with that being said, one stills need to be able filter out sentences that do not match exactly what you wanted to say.</p>
 </section>
 <section id="chatgpt" class="level1">
 <h1>ChatGPT</h1>
+<p>This an artificial intelligence (AI) chabot that uses natural language processing to mimic human-like conversational dialogue. It was mainly used for coding in this project.</p>
+<p>What I have noticed about chatgpt is that if I ask code related questions without specifying the coding language, it automatically returns a possible solution with a Python code. In order for it change , one has specifically tell it that the code is in R or whatever language.</p>
+<p>In this assignment, I was getting an error when using ggplot to plot the sentiment over time. The error was that there was only one group in the data i.e . it was only either negative or positives. Below is a snippet of the code.</p>
+<p><code>ggplot(aes(x = year, y = freq, colour = sentiment,group=sentiment))</code></p>
+<p>The only thing that was missing was the <code>group = sentiment</code> argument. I got by copy and paste the error from R to chatgpt as it gave an answer that was not useful.</p>
+<p>ChatGPT is very efficient with code questions, and the good thing about code , you can always test it and see if you get what you want. It becomes a challenge if one has no idea of what the code is suppose to output. One part where chatgpt struggles is written questions that are not asking about coding. Once you prompt it to further explain the answer, this is where things get tricky. The answers it produces are completely wrong and don’t make any sense at times.</p>
 
 
 </section>

@@ -7,8 +7,24 @@ format:
     html-math-method: katex
 ---
 
-In the part of the paper, we provide a description of what Large Language Models (LLM) were used for and provide a critical reflection on the performance of the LLM for assisting with data science related work such as this project.
+In this part of the paper, we provide a description of what Large Language Models (LLM) were used for and provide a critical reflection on the performance of the LLM for assisting with data science related work such as this project. The two LLM used in this paper are quillbot and ChatGPT each being completely different purposes.
 
-# QuillBolt AI
+# Quillbot- a paraphraser tool
+
+Quillbot is a paraphraser AI tool used to paraphrase a sentence or paragraph and make it formula. All the writing parts of this assignment, this AI tool was used to help with grammar. I type the sentence of my own then copy the sentence to this AI tool. In most cases, if not all , it always just replaces some words with synonyms. The sentence at times loses it meaning so I make sure that meaning is still what I wanted say. This tool doesn't do well with statistical terms especially if I wanted to rewrite interpretations to a mode. The output it generate at times does not make any sense.
+
+Given that I was using the free version of this tool, it's difficult to provide a complete assessment of its performance. The benefits of using this tool, is that it helps those people who struggle with writing and maybe English is not their home language But with that being said, one stills need to be able filter out sentences that do not match exactly what you wanted to say.
 
 # ChatGPT
+
+This an artificial intelligence (AI) chabot that uses natural language processing to mimic human-like conversational dialogue. It was mainly used for coding in this project.
+
+What I have noticed about chatgpt is that if I ask code related questions without specifying the coding language, it automatically returns a possible solution with a Python code. In order for it change , one has specifically tell it that the code is in R or whatever language.
+
+In this assignment, I was getting an error when using ggplot to plot the sentiment over time. The error was that there was only one group in the data i.e . it was only either negative or positives. Below is a snippet of the code.
+
+`ggplot(aes(x = year, y = freq, colour = sentiment,group=sentiment))`
+
+The only thing that was missing was the `group = sentiment` argument. I got by copy and paste the error from R to chatgpt as it gave an answer that was not useful.
+
+ChatGPT is very efficient with code questions, and the good thing about code , you can always test it and see if you get what you want. It becomes a challenge if one has no idea of what the code is suppose to output. One part where chatgpt struggles is written questions that are not asking about coding. Once you prompt it to further explain the answer, this is where things get tricky. The answers it produces are completely wrong and don't make any sense at times.

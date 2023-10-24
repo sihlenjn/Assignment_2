@@ -146,10 +146,18 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#data-pre-processing" id="toc-data-pre-processing" class="nav-link" data-scroll-target="#data-pre-processing">Data pre-processing</a></li>
   <li><a href="#sentiment-analysis" id="toc-sentiment-analysis" class="nav-link" data-scroll-target="#sentiment-analysis">Sentiment Analysis</a></li>
   <li><a href="#topic-modelling" id="toc-topic-modelling" class="nav-link" data-scroll-target="#topic-modelling">Topic modelling</a></li>
+  </ul></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and discussion</a>
+  <ul class="collapse">
+  <li><a href="#sentiment-analysis-1" id="toc-sentiment-analysis-1" class="nav-link" data-scroll-target="#sentiment-analysis-1">Sentiment analysis</a></li>
+  <li><a href="#topic-modelling-1" id="toc-topic-modelling-1" class="nav-link" data-scroll-target="#topic-modelling-1">Topic modelling</a></li>
+  </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -187,39 +195,362 @@ div.csl-indent {
 
 </header>
 
-<section id="abstract" class="level1">
-<h1>Abstract</h1>
-</section>
+<div class="cell">
+
+</div>
+<p>Abstract In this paper, we explore the integration of Latent Dirichlet Allocation (LDA) , a powerful topic modeling technique, and sentiment analysis to uncover deeper insights from textual data. Textual data analysis has gained significant importance in various domains, such as social media, customer reviews, and Large Language Model. While LDA is widely used for topic extraction, and sentiment analysis is employed to determine the emotional tone of texts, combining these two techniques can yield a more comprehensive understanding of text data. The objective of this paper was to conduct descriptive analysis using these methods. Our descriptive analysis of the presidents’ SONA speeches using LDA topic modeling and sentiment analysis find some minor differences in the tone of the words and sentence used by the presidents. However, LDA managed to pick up that speeches occurring the during the Covid-19 years were about Covid-19.</p>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Understanding the content and emotions hidden in volumes of text data is a great tool to get insights on the emotions of the Author of the text. In this paper, we look at the State of the Nation Address of the President of South Africa (SONA) speeches where the president of South Africa reports on the status of the nation. These speeches are provided as full text sources from <a href="https://www.gov.za/state-nation-address" class="uri">https://www.gov.za/state-nation-address</a>. We look to conduct a descriptive analysis of the content of the speeches using sentiment analysis and topic modelling. This will look at the tone of the expressed in the speeches by the president on the speeches through sentiment analysis. We also explore the underlying themes and patterns embedded in these speeches, this will be done via topic modelling. In both cases, we will look at identifying trends over time in the speeches.</p>
+<p>Understanding the content and emotions hidden in volumes of text data is a great tool to get insights on the emotions of the meaning behind written text. In this paper, we look at the State of the Nation Address of the President of South Africa (SONA) speeches where the president of South Africa reports on the status of the country. These speeches are provided as full text sources from <a href="https://www.gov.za/state-nation-address" class="uri">https://www.gov.za/state-nation-address</a>. We look to conduct a descriptive analysis of the content of the speeches using sentiment analysis and topic modelling. This will look at the tone expressed in the speeches by the presidents through sentiment analysis. We also explore the underlying themes and patterns embedded in these speeches, this will be done via topic modelling. Using sentiment analysis, we will look at identifying trends over time in the speeches i.e.&nbsp;how have their sentiment changed over the years from 1994 to 2023 when analyzing the entire data set.</p>
 <p>The structure of the paper is divided into the following sections:</p>
 <ul>
-<li><p><em>Data pre-processing</em>: This is explains how the data was cleaned and transformed to a compatible form such as we can conduct our analysis.</p></li>
-<li><p><em>Methodology</em>: We touch on the theory of latent Dirichlet allocation (LDA) which is used for topic modelling and the steps taken to conduct sentiment analysis.</p></li>
-<li><p><em>Results and discussion</em> : This compromises of plots, tables and discussion on the results obtained. We also include future recommendations on parts that be improved and also some shortcomings can must be considered for somewhere reading this paper.</p></li>
+<li><p><em>Data pre-processing</em>: This is explains how the data was cleaned and transformed to a compatible form such that we can conduct our analysis.</p></li>
+<li><p><em>Methodology</em>: We touch on the theory of sentiment analysis and steps taken to conduct Latent Dirichlet allocation (LDA) which is used for topic modelling.</p></li>
+<li><p><em>Results and discussion, conclusion</em> : This compromises of plots, tables and discussion on the results obtained.</p></li>
 </ul>
 </section>
-<section id="sentiment-analysis" class="level1">
-<h1>Sentiment Analysis</h1>
+<section id="methodology" class="level1">
+<h1>Methodology</h1>
+<section id="data-pre-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-pre-processing">Data pre-processing</h2>
+<p>The data set used for this paper is sourced from <a href="https://www.gov.za/state-nation-address" class="uri">https://www.gov.za/state-nation-address</a>, the full speeches of State of the Nation Address from current and former presidents. The speeches included are from 1994 to 2023. All the analysis in this paper is conducted in R <span class="citation" data-cites="R">R Core Team (<a href="#ref-R" role="doc-biblioref">2023</a>)</span>.</p>
+<div class="cell">
+
+</div>
+<p>The full speeches are read from Ian Durbach’s Github repository. The resulting data frame has two columns <em>filename</em> and <em>speech</em>. New columns, president, year and date are added to indicate from which president the speeches are from and also the dates the speeches took place. The dates are generated from the first part of each speech since they all begin with a date. hese dates are then removed from all the speeches and any unnecessary text which will not be useful in our analysis. Such text include is removed includes website links , encoding for new lines <strong>\n</strong> , backlashes . The generated are converted to same format given by <span class="math inline">\text{dd-mm-yyyy}</span>. A new column, named <code>pres_num</code> , a factor variable used to denote each president with classes from 1 to 6.</p>
 </section>
-<section id="topic-modelling" class="level1">
-<h1>Topic modelling</h1>
+<section id="sentiment-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="sentiment-analysis">Sentiment Analysis</h2>
+<p>Sentiment analysis is the analysis of emotions, opinions and feelings of people expressed in written text. These can be in the form of speeches of presidents, tweets , events etc. Through sentiment analysis, one is able to gain deeper insights into body of text. In this section, we explore sentiment analysis conducted on the data set of the South African presidents’ speeches from 1994 to 2023 and we also look at how these change over time.</p>
+<p>We will be using the <em>bing</em> sentiment lexicons which comes with the <strong>tidytext</strong> package. This is a list of words labelled as positive or negative. We will analyse the sentiment of the words used by the presidents in their speeches&nbsp;and assess if these are positive or negative. It is for this reason that the token used to tokenize the data set is words. For cases where a word does not exist in the <em>bing</em> lexicon, these words will be labelled as neutral. The individual president’s speeches will be analyzed. To analyse trends of the sentiments over time, the time period that will be considered is years. This will be done the entire data set and then consider individual presidents. The presidents that will be considered are Jacob Zuma and Thabo Mbeki.</p>
+<p>The second part of this section, we look to assess the sentiment of longer sequences , sentences will considered. To conduct this analysis, we first tokenize the data set into sentences and then add an index column to the tokenized data for each sentence. The data is further tokenized into words for which their sentiments will be analysed. To analyse the sentiment of a sentence. This is done by analysing the sentiment of the individual words in the sentences and add up the sentiments over words. The net sentiment of the sentence will be given by the difference between the sum of positive sentiments and negative sentiments of the words in the sentence. Therefore, this implies that a negative net sentiment refers to a sentence that has a negative sentiment and vice versa. Similarly to part one of this section, we also look at the trends of the sentiment of the sentences over the years. &nbsp;</p>
 </section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
-<p>In <a href="#fig-NormalDistribution">Figure&nbsp;1</a> , 1000 random variables are generated from a standard normal distribution <span class="math inline">\bar{x}= 0</span> and <span class="math inline">\sigma^2=1</span></p>
+<section id="topic-modelling" class="level2">
+<h2 class="anchored" data-anchor-id="topic-modelling">Topic modelling</h2>
+<p>Topic modelling is a natural language processing (NLP) technique used to summarize a document by describing it in terms of small number of topics. It is useful for task such as document clustering, content recommendation. In this paper, we will implement latent Dirichlet allocation (LDA), which is a popular method for doing topic modelling. Other methods such Latent Semantic analysis (LSA) , Probabilistic Latent Semantic analysis (pSLA) exists, the focus of this paper will be the LDA model for doing topic modelling. In LDA, each document is a mixture of topics and each topic is a mixture of words. To implement LDA, the following steps will be followed:</p>
+<ul>
+<li><p>Add an extra column for speech id before the data is tokenized.</p></li>
+<li><p><em>Tokenization</em>: Tokenize the speech data set into individuals words and remove stop words.</p></li>
+<li><p><em>Document-term matrix</em>: Create a long tidy format document-term matrix where we count frequency of the words in each speech. i.e.&nbsp;the number of times each word is used in each speech. The document-term will not be created from stretch. The reason for this, the <strong>topicmodels</strong> package used to implement LDA requires the document-term matrix to be provided as a DocumentTermMatrix object. The document in our case are the individual speeches from each president.</p></li>
+<li><p><em>LDA modelling</em>: We fit the LDA model by first specifying the number of variables we wish to use</p></li>
+<li><p>Topic and document inference: Infer on the topics for each document. This is to find topics contained in the documents, the gamma parameter will be used for this. It give the topic mixtures for each document. We also examine the most common words associated with each topic to interpret their meaning and compare different topics in terms of their difference.</p></li>
+</ul>
+<p>The number of topics must be specified before training model. Given that all the speeches are about the State of the Nation Address , it’s unlikely that the model will find different topics. Hence, the value of k used will be 3.</p>
+</section>
+</section>
+<section id="results-and-discussion" class="level1">
+<h1>Results and discussion</h1>
+<section id="sentiment-analysis-1" class="level2">
+<h2 class="anchored" data-anchor-id="sentiment-analysis-1">Sentiment analysis</h2>
+<p><strong>Positive and negative words used in the speeches</strong></p>
+<p>The data is tokenize to individual words and stop words are removed. We look at the most used positive and negative in all the speeches.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-NormalDistribution" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-Words" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="assignment2_files/figure-html/fig-NormalDistribution-1.png" class="img-fluid figure-img" width="2100"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Random values from a Normal distribution.</figcaption><p></p>
+<p><img src="assignment2_files/figure-html/fig-Words-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Top 15 mostly common used positive and negative words by all presidents.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p><span class="citation" data-cites="R">R Core Team (<a href="#ref-R" role="doc-biblioref">2023</a>)</span> is used in this project.</p>
+<p><a href="#fig-Words">Figure&nbsp;1</a> show the top 15 commonly used words by the president in their speeches, both negative and positive. The most commonly used positive words in the speeches are regard, improve and support. This is quite surprising, one would expect the words such freedom and empowerments to be in the top 3 given that a random person would generally expect these words from the president of a country.</p>
+<p>Looking at negative words, crime and poverty top the list , with corruption ranked fourth. For a person invested in the state of South Africa especially politics, it will be no surprise that these words are ranked in the top in the lost of most used negative.</p>
+<p>Having looked at all the speeches without grouping by presidents, of interest will be positive and negative words used by each president in their speeches.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-indiviPresident" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="assignment2_files/figure-html/fig-indiviPresident-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Top 5 mostly common used positive words by each president.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In <a href="#fig-indiviPresident">Figure&nbsp;2</a> , we can see that the word regard appears in to be most used positive word by the president. With 3 of the president using this words, Mandela , Mbeki and Motlanthe. This is expected as this was the most used word when look at all the speeches. The most popular word across all the presidents is freedom with the exception of Ramaphosa. We also note that deKlerk’s counts are very low compared to the other presidents. The reason for this is that deKlerk only made one speech which was shorter in terms of the number of sentence compared to the other 5 presidents. Motlanthe also made one speech , but in terms length, it was in the range of other presidents who had longer speeches. If we were summarize the theme of all these words,based on these plots, it’s freedom, improvement and progress.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-indiviPre" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="assignment2_files/figure-html/fig-indiviPre-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Top 5 mostly common used negative words by each president.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-indiviPre">Figure&nbsp;3</a> displays the top 5 most used negative words by the presidents. Crime, Issues and Poverty dominates. An interesting observation, is that none of these words are popular in deKlerk’s speech. This is where things can be misleading and we have to be very careful at how we view these results. This certainly does not mean crime and poverty were not present during those times and also does not mean they were. if this graphic were to be given to someones with no context, a lot of misinterpretation would occur. Our interest is looking at the positive and negative words used by the presidents in their speeches and how these vary from one president to another</p>
+<p><strong>Sentiment over time</strong></p>
+<p>This part look at how the sentiment of the words in these speeches change over time. This is done based on year, which is from 1994 to 2023 by determining the frequency of positive and negative words. The overall sentiment over the years is indicated in <a href="#fig-time">Figure&nbsp;4</a> . Based on this plot, the proportion of positive sentiment is exceeds the proportion of negative sentiment given that the plot indicating the positive sentiment is always above the the one showing negative sentiment. The smooth lines can be thought of showing the predicted distribution in the long-run. Around 2014 , we notice a drop in both sentiments and starts to gradual pick-up again.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-time" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="assignment2_files/figure-html/fig-time-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Sentiment of the words used in the speeches from 1994 to 2023</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the individual presidents, we will look at Jacob Zuma and Thabo Mbeki. The proportion of positive and negative sentiments in their speeches is shown in <a href="#fig-zuma">Figure&nbsp;5</a> . For Mbeki, we can see that the proportion of words with positive sentiment exceeds the of words with negative sentiments. On the other hand, we notice that in Zuma’s case, the curves are quite close to each other with a decreasing curve for the proportion of words with positive sentiment and increasing curve for the proportion of words with negative sentiment starting around 2015. However, this is a small size as a president can only serve for a certain period of time.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 2
+ $ axis.text.x:List of 11
+  ..$ family       : NULL
+  ..$ face         : NULL
+  ..$ colour       : NULL
+  ..$ size         : num 10
+  ..$ hjust        : num 1
+  ..$ vjust        : NULL
+  ..$ angle        : num 90
+  ..$ lineheight   : NULL
+  ..$ margin       : NULL
+  ..$ debug        : NULL
+  ..$ inherit.blank: logi FALSE
+  ..- attr(*, "class")= chr [1:2] "element_text" "element"
+ $ axis.text.y:List of 11
+  ..$ family       : NULL
+  ..$ face         : NULL
+  ..$ colour       : NULL
+  ..$ size         : num 10
+  ..$ hjust        : NULL
+  ..$ vjust        : NULL
+  ..$ angle        : NULL
+  ..$ lineheight   : NULL
+  ..$ margin       : NULL
+  ..$ debug        : NULL
+  ..$ inherit.blank: logi FALSE
+  ..- attr(*, "class")= chr [1:2] "element_text" "element"
+ - attr(*, "class")= chr [1:2] "theme" "gg"
+ - attr(*, "complete")= logi FALSE
+ - attr(*, "validate")= logi TRUE</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-zuma" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="assignment2_files/figure-html/fig-zuma-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: Sentiment of the Zuma and Mbeki’s words used in their speeches from 1994 to 2023</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Aggregating sentiment over words</strong></p>
+<p>In the previous analysis, we only looked at individual words. We use sentence in this case, so the starting point is to tokenize the data by sentences. After tokenizing, we add an index for each of the resulting sentences. To determine the sentiment of a sentence, net sentiment , it is difference between sum positive words and negative words. A negative net sentiment indicated a negative sentence and positive one indicate a positive sentence with 0 indicating neutral. <a href="#fig-sentence">Figure&nbsp;6</a> shows the proportion of negative and positive sentiments for sentence over the years.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-sentence" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="assignment2_files/figure-html/fig-sentence-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6: Proportion of positive and negative sentence in the president’ speeches from 1994 to 2023.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The red line indicate negative sentiment and the green one indicates positive sentiment. The proportion of sentence with positive sentiments was at its peak between 2005 and 2009 afterwards a decrease can be seen. Thabo Mbeki was the president during this period and after this period , Zuma and Motlanthe took over. Although Montlanthe only served for a year.</p>
+<p>With respect to sentences with negative sentiment, the top graph (red) shows a gradual decrease which means the sentences used by the president were positive. In 2015, we start noticing an increase. Comparing the two, the proportion of positive sentiments fluctuates compared to the negative sentiments.</p>
+</section>
+<section id="topic-modelling-1" class="level2">
+<h2 class="anchored" data-anchor-id="topic-modelling-1">Topic modelling</h2>
+<p>To fit LDA we follow the step outlined in the methodology section.</p>
+<p>Nothing really interesting as these speeches are drafted way before time hence one is likely to see less negative words.</p>
+<div class="cell">
+
+</div>
+<p><strong>Word-topic probabilities</strong></p>
+<div class="cell">
+
+</div>
+<p>To draw out differences between the 3 topics, we look at words that have the greatest difference in beta values between the 3 topics. This is done by taking the log ratio of the two betas of the topics to be compared , the ratio is given by <span class="math inline">\log_2 (\beta_2/\beta_1)</span> We compare all 3 topics in turns, i.e.&nbsp;1 vs 2 , 1 vs 3 and 3 vs 2 .</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-t12" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="assignment2_files/figure-html/fig-t12-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7: Words with greatest difference in <span class="math inline">eta</span> between topic 1 and topic 2</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The word that is common is topic 1 is “madame” but this word is used in every speech so this implies the speeches could all be the same topic. Topic 1 is characterized by the word “compatriots” Given that majority of the words have log ratio that relatively small, the topics are likely to be same topic.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-t23" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="assignment2_files/figure-html/fig-t23-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: Words with greatest difference in <span class="math inline">eta</span> between topic 2 and topic 3</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The word that is common is topic 2 is “pandemic” and “covid” , this topic was definitely about Covid-19 and was made after the year 2020. All the words in Topic 3 are have a small log ratio meaning topic 2 and topic 3 are similar.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-13" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="assignment2_files/figure-html/fig-13-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9: Words with greatest difference in <span class="math inline">eta</span> between topic 1 and topic 3</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comparing Topic 1 and Topic 3: in Topic 1 is characterized by pandemic , covid and capture which further confirms that this topic was about Covid-19. For Topic 1, madame and context are more common. In all the three comparisons made in <a href="#fig-t12">Figure&nbsp;7</a> , <a href="#fig-13">Figure&nbsp;9</a> and <a href="#fig-t23">Figure&nbsp;8</a> we notice all these topics are not different, this was expected as each document ( speech) come from the president speeches which are all about the government, politics and South Africa.</p>
+<p><strong>Document-topic probabilities</strong></p>
+<p>The document-topic probabilities help us to assess whether a particular document is mostly about Topic <span class="math inline">i</span>. We deduced that Topic 3 and Topic 2 were about Covid 19 based on the plots from the word-topic probabilities. We expect all the speeches after 2020 which were done by Cyril Ramaphosa to be predicted to be about either Topic 3 or Topic 2.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Topics for all Ramaphosa’s speeches</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">speech_id</th>
+<th style="text-align: right;">topic_1</th>
+<th style="text-align: right;">topic_2</th>
+<th style="text-align: right;">topic_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.3445</td>
+<td style="text-align: right;">0.6555</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">1.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">1.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">1.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Indeed, the model predicted these speeches are predicted to be about Topic 2 or 3 as the Table show probabilities of 0 under Topic 1.</p>
+<p>We explore Zuma’s speeches to see which topic the model predicted them to be. The table below shows that Zuma’s speeches were about Topic 2</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> topic_1  topic_2  topic_3 
+1.206726 5.760434 3.032840 </code></pre>
+</div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Topics for all Zuma’s speeches</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">speech_id</th>
+<th style="text-align: right;">topic_1</th>
+<th style="text-align: right;">topic_2</th>
+<th style="text-align: right;">topic_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">1.0000</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">1.0000</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0.0107</td>
+<td style="text-align: right;">0.9785</td>
+<td style="text-align: right;">0.0108</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.9008</td>
+<td style="text-align: right;">0.0992</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.8797</td>
+<td style="text-align: right;">0.1203</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0.5375</td>
+<td style="text-align: right;">0.3770</td>
+<td style="text-align: right;">0.0856</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0.6584</td>
+<td style="text-align: right;">0.3001</td>
+<td style="text-align: right;">0.0415</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.2157</td>
+<td style="text-align: right;">0.7843</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.1086</td>
+<td style="text-align: right;">0.8914</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">1.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In this paper, we performed descriptive analysis using sentiment analysis and LDA on the speeches by the presidents of South Africa. The sentiment analysis was to gauge the emotional tone of the words and sentences used by the presidents in their speeches. There was no great difference in the tone of the words used. Taking into account that the speeches are probably written by people who are part of the presidency, who their job is edit and write these speeches. It was always going to be difficult problem to pinpoint the tone of the speeches to the president and also to have major differences in their speeches. If a president spends more than 5 years in office, it’s likely that the president might have the same writer for all those years. This means there won’t be any significant differences in the speeches of the president if we were to compare them from year to year. Of course, with the exception if there’s a global event that affect the entire world then the speech might change.</p>
+<p>The LDA model predicted some of the speeches that took place during the pandemic to be about Covid-19. We did not know the topics beforehand but the model did not find any major differences between different the topics used. With the exception of the Covid-19 one. This is due to the fact these are all government speeches so they could be about the same topic.</p>
+<p>The lexicons provided by the R package are subject so instead of using one lexicon, <em>bing</em>. One could extend this by conducting descriptive analysis using the other lexicons and compare the results. Given that South Africa has so many languages and some non-English words were used in the speeches of the presidents. It would really interesting if there was a lexicon for non-English words, maybe one of the official languages here in South Africa.</p>
 
 
 
