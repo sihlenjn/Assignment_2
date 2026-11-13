@@ -87,7 +87,7 @@ Comparing the most distinctive words across the three LDA topics using word-topi
 
 ---
 
-## 💡 Key Findings
+## Key Findings
 
 - Positive word frequencies were generally higher than negative word frequencies across the period.
 - Positive sentence sentiment peaked around 2005–2009, followed by a decline.
@@ -95,7 +95,7 @@ Comparing the most distinctive words across the three LDA topics using word-topi
 - The LDA model identified substantial similarities between topics, with pandemic-related vocabulary distinguishing one topic.
 - Speeches from the COVID-19 period were associated with terms such as *pandemic* and *COVID*.
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 Assignment_2/
@@ -119,13 +119,6 @@ Assignment_2/
 ├── _quarto.yml
 └── README.md
 ```
-
-## Project Website & Report
-
-- [View the published project website](https://sihlenjn.github.io/Assignment_2/)
-- [Explore the main research report](docs/assignment2.html)
-- [View the source repository](https://github.com/sihlenjn/Assignment_2)
-
 
 ---
 
